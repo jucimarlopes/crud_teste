@@ -1,25 +1,29 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
-th, td{
-    padding: 0 5px;	
+
+th,
+td {
+    padding: 0 5px;
     margin-left: auto;
     margin-right: auto;
-    width: auto;    
+    width: auto;
     vertical-align: middle;
     text-align: center;
     font-size: 14px;
-    
+
 }
-a{    
-	margin: 0 5px;
-	padding: 0 5px;	
+
+a {
+    margin: 0 5px;
+    padding: 0 5px;
     vertical-align: middle;
     text-align: center;
     text-decoration: none;
 }
-#acoes_container, #acoes_mov
-{
+
+#acoes_container,
+#acoes_mov {
     width: 20%;
 }
