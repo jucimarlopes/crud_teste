@@ -1,3 +1,9 @@
+<?php
+
+require_once 'crud.php';
+$crud_teste = new Crud_Teste();
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -53,8 +59,8 @@
                 $('.form_novo_container').hide();
                 $('.form_nova_mov').hide();
                 $('.div_list_containers').show();
-                $('.div_list_mov').show();                
-            });           
+                $('.div_list_mov').show();
+            });
         });
     </script>
 
