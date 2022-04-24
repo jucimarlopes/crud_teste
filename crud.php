@@ -43,7 +43,7 @@ class Crud_Teste
 	public function buscarContainer($num_container)
 	{
 		$res = array();
-		$cmd = $this->pdo->prepare("SELECT * FROM tbl_containers WHERE num_container = :numero");
+		$cmd = $this->pdo->prepare("SELECT * FROM tbl_container WHERE num_container = :numero");
 		$cmd->bindValue(':numero', $num_container);
 		$cmd->execute();
 		$res = $cmd->fetch(PDO::FETCH_ASSOC);
@@ -54,11 +54,11 @@ class Crud_Teste
 	public function buscarMovimento($id_mov)
 	{
 		$res = array();
-		$cmd = $this->pdo->prepare("SELECT * FROM tbl_mov WHERE num_container = :numero");
-		$cmd->bindValue(':numero', $id_mov);
+		$cmd = $this->pdo->prepare("SELECT * FROM tbl_mov WHERE id_mov = :id_mov");
+		$cmd->bindValue(':id_mov', $id_mov);
 		$cmd->execute();
 		$res = $cmd->fetch(PDO::FETCH_ASSOC);
-		return $res;
+		return $res;		
 	}
 
 	public function cadastrarContainer(
@@ -75,7 +75,19 @@ class Crud_Teste
 		if ($cmd->rowCount() > 0) {
 			return false;
 		} else {
-			$cmd = $this->pdo->prepare("INSERT INTO tbl_container VALUES (:clinete, :numero, :tipo, :stat, :categoria)");
+			$cmd = $this->pdo->prepare("INSERT INTO tbl_container (
+				cliente_container, 
+				num_container,
+				tipo_container,
+				status_container,
+				categoria_container
+				) 
+				VALUES
+				(:cliente,
+				:numero,
+				:tipo,
+				:stat,
+				:categoria)");
 			$cmd->bindValue(':cliente', $cliente_container);
 			$cmd->bindValue(':numero', $num_container);
 			$cmd->bindValue(':tipo', $tipo_container);
@@ -100,7 +112,7 @@ class Crud_Teste
 		$cmd->execute();
 		return true;
 	}
-	public function excluirContainer($num_container, $id_mov)
+	public function excluirContainer($num_container)
 	{
 		$cmd = $this->pdo->prepare("SELECT id_mov FROM tbl_mov WHERE num_container = :numero");
 		$cmd->bindValue(':numero', $num_container);
@@ -109,7 +121,7 @@ class Crud_Teste
 		if ($cmd->rowCount() > 0) {
 			return false;
 		} else {
-			$cmd = $this->pdo->prepare("DELETE FROM tbm_container WHERE num_container = :numero");
+			$cmd = $this->pdo->prepare("DELETE FROM tbl_container WHERE num_container = :numero");
 			$cmd->bindValue(':numero', $num_container);
 			$cmd->execute();
 		}
@@ -141,13 +153,13 @@ class Crud_Teste
 			header('location:index.php?trocaEmail=falha');
 		} else {
 			$cmd = $this->pdo->prepare("UPDATE tbl_container SET cliente_container = :cliente, tipo_container = :tipo, status_container = :stat, categoria_container = :categ WHERE num_container = :numero");
-			$cmd->bindValue(':cliente', $cliente_container);
+			$cmd->bindValue(':cliente', $cliente_container);			
+			$cmd->bindValue(':numero', $num_container);			
 			$cmd->bindValue(':tipo', $tipo_container);
 			$cmd->bindValue(':stat', $status_container);
 			$cmd->bindValue(':categ', $categoria_container);
 			$cmd->execute();
-
-			header('location: index.php?trocaEmail=sucesso');
+			header('location:index.php?trocaEmail=sucesso');
 		}
 	}
 
