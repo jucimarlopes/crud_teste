@@ -1,34 +1,124 @@
-* {
-    padding: 0px;
-    margin: 0px;
+*
+{
+	margin: 0;
+	padding: 0;	
+}
+h2
+{
+	text-align: center;
 }
 
-th,
-td {
-    padding: 0 5px;
+label, input 
+{
+	display: block;
+	width: 100%;
+	line-height: 30px;
+	height: 30px;
+	outline: none;
+	font-size: 13pt;
+}
+
+input[type="submit"]
+{
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+table
+{
+	width: 100%;
+	margin: 0 auto;
+	background-color:blue(0, 0, 0, 0.2);
+}
+
+tr
+{
+	line-height: 30px;
+}
+
+tr#titulo_container, tr#titulo_mov
+{	
+    text-align: center;
+	font-weight: bold;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+td
+{
+	padding: 0 5px;
+}
+
+a
+{
+	text-decoration: none;
+	margin: 0 5px;
+	padding: 5px;
+	color: #000;
+	background-color: #fff;
+}
+
+.aviso
+{
+	width: 100%;	
+	margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+img 
+{
+	float: left;
+	width: 50px;
+}
+
+h4
+{
+	float: center;
+	line-height: 50px;
+    text-align: center;
+}
+
+.botao
+{
+    display: block;
+    width: 20%;
+    height: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: auto;
-    vertical-align: middle;
     text-align: center;
-    font-size: 14px;
+}
+#lista_containers
+{	
+	display: fixed;
+    width: 90%;    
+	height: 50%;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
-a {
-    margin: 0 5px;
-    padding: 0 5px;
-    vertical-align: middle;
-    text-align: center;
-    text-decoration: none;
+#lista_movs
+{	
+	display: fixed;
+    width: 90%; 
+	height: 50%;   
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#acoes_container,
-#acoes_mov {
-    width: 35%;
-}
-
-.visible
+#cadastro
 {
-    visibility: hidden;
+    display: fixed;
+    width: 50%;    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#movimento
+{
+    display: fixed;
+    width: 50%;    
+    margin-left: auto;
+    margin-right: auto;
 }

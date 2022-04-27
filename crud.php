@@ -52,7 +52,7 @@ class Crud_Teste
 
 	//CADASTRAR MOVIMENTAÇÃO DE CONTAINER
 	public function cadastrarMovimento(		
-		$num_container,
+		$num_container_mov,
 		$tipo_mov,
 		$dt_inicio_mov,
 		$dt_fim_mov
@@ -66,14 +66,15 @@ class Crud_Teste
 			VALUES 
 			(:numero, 
 			:tipo, 
-			:dt_inicio, 
-			:dt_fim)");			
-		$cmd->bindValue(':numero', $num_container);
+			:dt_inicio,
+			:dt_fim)");	
+		$cmd->bindValue(':numero', $num_container_mov);
 		$cmd->bindValue(':tipo', $tipo_mov);
 		$cmd->bindValue(':dt_inicio', $dt_inicio_mov);
-		$cmd->bindValue(':dt_fim', $dt_fim_mov);
+		$cmd->bindValue(':dt_fim',$dt_fim_mov);
 		$cmd->execute();
 		return true;
+		echo "<div>passei aqui</div>";
 	}
 
 	//SELECIONAR TODOS OS REGISTROS DE CONTAINERS
@@ -156,11 +157,11 @@ class Crud_Teste
 	}
 
 	//ATUALIZAR MOVIMENTO
-	public function atualizarMovimento($id_mov, $num_container, $tipo_mov, $dt_inicio_mov, $dt_fim_mov)
+	public function atualizarMovimento($id_mov, $num_container_mov, $tipo_mov, $dt_inicio_mov, $dt_fim_mov)
 	{
 		$cmd = $this->pdo->prepare("UPDATE tbl_mov SET num_container = :numero, tipo= :tipo, data_inicio_mov = :dt_inicio_mov, data_termino_mov = :dt_fim_mov WHERE id_mov = :id_mov");
 		$cmd->bindValue(':id_mov', $id_mov);
-		$cmd->bindValue(':numero', $num_container);
+		$cmd->bindValue(':numero', $num_container_mov);
 		$cmd->bindValue(':tipo', $tipo_mov);
 		$cmd->bindValue(':dt_inicio_mov', $dt_inicio_mov);
 		$cmd->bindValue(':dt_fim_mov', $dt_fim_mov);		
@@ -189,10 +190,11 @@ class Crud_Teste
 	}
 
 	//EXCLUIR MOVIMENTAÇÃO DE CONTAINER
-	public function excluirMovimento($id_mov)
+	public function excluirMovimento($id_mov_del)
 	{
-		$cmd = $this->pdo->prepare("DELETE FROM tbm_mov WHERE id_mov = :id_mov");
-		$cmd->bindValue(':id_mov', $id_mov);
+		$cmd = $this->pdo->prepare("DELETE FROM tbl_mov WHERE id_mov = :id_mov");
+		$cmd->bindValue(':id_mov', $id_mov_del);
 		$cmd->execute();
 	}	
+	
 }
