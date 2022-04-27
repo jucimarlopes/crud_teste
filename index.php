@@ -182,10 +182,7 @@ $crud_teste = new Crud_Teste();
                         $dataf = implode('/', array_reverse(explode('-', $dados[$i]['data_termino_mov'])));                        
                         $dados[$i]['data_termino_mov'] = $dataf;
 
-                        foreach ($dados[$i] as $k => $v) {                              
-                            
-                            
-                            
+                        foreach ($dados[$i] as $k => $v) { 
                             echo '<td>' . utf8_encode($v) . '</td>';
                         }
                 ?>
@@ -223,7 +220,7 @@ $crud_teste = new Crud_Teste();
     <br>            
     <br>            
     <br>            
-    
+
     <div class="container" id="cadastro">
         <form method="POST">
             <h2>
@@ -393,8 +390,7 @@ if (isset($_GET['id_container_del']) && isset($_GET['num_container_del'])) {
 }
 ?>
 <?php
-if (isset($_GET['id_mov_del'])) {
-    echo 'Passei aqui';
+if (isset($_GET['id_mov_del'])) {    
     $id_mov_del = addslashes($_GET['id_mov_del']);
     $crud_teste->excluirMovimento($id_mov_del);
 }
